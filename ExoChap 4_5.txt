@@ -1,0 +1,78 @@
+//Exo Convertion de Temperature 
+fun main() {
+     printFinalTemperature(27.0, "Celsius", "Fahrenheit") {celsuis -> 9.0/5.0 *celsuis + 32}
+     printFinalTemperature(350.0, "kelvin", "Celsuis") { kelvin -> kelvin - 8}
+     printFinalTemperature(10.0, "Fahrenheit", "Kelvin") { Fahrenheit -> 5.0/9.0 * (Fahrenheit - 32) + 273.15}
+  }
+ 
+ fun printFinalTemperature(
+     initialMeasurement: Double,
+     initialUnit: String,
+     finalUnit: String,
+     conversionFormula: (Double) -> Double
+ ) {
+     
+     val finalMeasurement = String.format("%.2f",conversionFormula(initialMeasurement)) // two decimal places
+     println("$initialMeasurement degrees $initialUnit is $finalMeasurement degrees $finalUnit.")
+
+ }
+ 
+  fun main() {
+      printFinalTemperature(
+      initialMeasurement = 27.0,
+      initialUnit = "Celsius",
+      finalUnit = "Fahrenheit",
+      conversionFormula = { 9.0/5.0 *it +32} )
+  }
+ 
+
+
+
+//Exo de Musique.
+class Song(
+    val title: String,
+    val artist: String,
+    val year: Int,
+    var playCount: Int
+) {
+    val isPopular: Boolean
+        get() = playCount >= 1000
+    fun printDescription() {
+        
+        println("$title, interprété par $artist, est sorti en $year.")
+    }
+}
+
+fun main() {
+    val song1 = Song("ya pas mouzingue", "himra", 2024, 900)
+    val song2 = Song("911", "niska ft ninho ft koba lad", 2024, 1500)
+
+    song1.printDescription() 
+    println("Popularité: ${if (song1.isPopular) "Populaire" else "Peu populaire"}")
+
+    song2.printDescription() 
+    println("Popularité: ${if (song2.isPopular) "Populaire" else "Peu populaire"}")
+}
+
+
+
+//Exo Couverture de Profil
+fun main() {
+     val amanda = Person("Amanda", 33, "play tennis", null)
+     val atiqah = Person("Atiqah", 28, "climb", amanda)
+    amanda.showProfile()
+    atiqah.showProfile()
+ }
+
+class Person(val name: String, val age: Int, val hobby: String?, val referrer: Person?) {
+    fun showProfile() {
+        println("Name: $name")
+        println("Age: $age")
+        println("Likes to $hobby")
+        if (referrer == null) {
+            println("Doesn't have a referrer \n")
+        }else{
+            println("Has a referrer named ${referrer.name}, who likes to play tennis.")
+        }
+  }
+}
